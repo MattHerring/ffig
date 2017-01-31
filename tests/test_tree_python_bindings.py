@@ -1,4 +1,7 @@
+import common
 from Tree import *
+
+common.set_library_path(Config)
 
 def test_root_node_is_non_null():
     t = Tree(2)
