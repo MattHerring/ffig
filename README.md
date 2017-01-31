@@ -47,37 +47,22 @@ Update submodules with `git submodule update --init --recursive`.
 Untested, minor issues expected.
 
 
-# Using the API generator
+## Submodules
+Tests use the 'catch' test framework: <https://github.com/philsquared/Catch.git>
 
-Currently little more than an extensible proof of concept, the method for running API generation is due revision.
+To get the submodule run:
 
-For now:
-
-Add code to the 'input' directory in a similar vein to the existing 'Shape.h' class and run:
-    
-`./run_tests.sh`
-
-this populates 'output' with generated files and runs the simple existing tests.
-
-Adding django templates to the 'templates' directory in a similar vein to the
-existing templates will generate extra output files.
-
-New input files and templates are picked up automatically.
+```
+git submodule update --init
+```
 
 
-# Output
+## Building
+The build uses cmake driven by a simple Python script. To build and run tests, run the following from the console:
 
-The 'output' directory is populated with C++, C and Python bindings files along with a dynamic library.
-
-Setting `LD_LIBRARY_PATH` so that the C-API bindings shared libraries in `output` can be found and
-running the following in `ipython` will exercise the generated python bindings.
-
-    from YOUR_BASE_CLASS_NAME import *
-
-    x = DERIVED_CLASS_NAME(CONSTRUCTOR_ARGUMENTS)
-    x.MEMBER_FUNCTION_1(MEMBER_FUNCTION_ARGUMENTS_1)
-    x.MEMBER_FUNCTION_2(MEMBER_FUNCTION_ARGUMENTS_2)
-
+```
+./scripts/build.py --tests
+```
 
 #Continuous integration
 
