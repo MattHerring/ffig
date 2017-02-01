@@ -176,7 +176,7 @@ class Config:
                     library = cdll.LoadLibrary(os.path.join(this_file_dir, self._get_filename()))
                 except:
                     # Use system library path (last).
-                    library = cdll.LoadLibrary(self._get_filename())))
+                    library = cdll.LoadLibrary(self._get_filename())
         except OSError as e:
             msg = str(e) + ". To provide a path to {{class.name}} dylib use Config.set_library_path()"
             raise Exception(msg)
