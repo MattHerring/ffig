@@ -158,7 +158,7 @@ class Config:
             file = 'lib{{class.name}}_c.so'
         return file
 
-     def _get_filepath(self):
+    def _get_filepath(self):
         filename = self._get_filename()
         if not Config.library_path:
             return filename
