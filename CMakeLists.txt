@@ -18,11 +18,12 @@ function(add_ffig_library module input)
     COMMAND ${PYTHON_EXECUTABLE} FFIG.py -i ${input} -m ${module} -t ${CMAKE_SOURCE_DIR}/templates -b _cpp.h.tmpl _mocks.h.tmpl rb.tmpl py.tmpl _c.h.tmpl _c.cpp.tmpl -o ${CMAKE_BINARY_DIR}/generated
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 
-  # FIXME: This is a bit ugly. The shared library is copied next to the generated bindings.
+  # FIXME: This is a bit ugly. The header is copied next to the generated bindings.
   file(COPY ${input} DESTINATION ${CMAKE_BINARY_DIR}/generated/)
 
   add_library(${module}_c SHARED ${input} ${CMAKE_BINARY_DIR}/generated/${module}_c.h ${CMAKE_BINARY_DIR}/generated/${module}_c.cpp)
 
+  # FIXME: This is a bit ugly. The shared library is copied next to the generated bindings.
   add_custom_command(TARGET ${module}_c
     POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${module}_c> ${CMAKE_BINARY_DIR}/generated/)
