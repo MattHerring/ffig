@@ -29,9 +29,9 @@ function(add_ffig_library module input)
     COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${module}_c> ${CMAKE_BINARY_DIR}/generated/)
 endfunction()
 
-add_ffig_library(Shape ${CMAKE_SOURCE_DIR}/input/Shape.h)
-add_ffig_library(Tree ${CMAKE_SOURCE_DIR}/input/Tree.h)
-add_ffig_library(Asset ${CMAKE_SOURCE_DIR}/input/Asset.h)
+add_ffig_library(Shape input/Shape.h)
+add_ffig_library(Tree input/Tree.h)
+add_ffig_library(Asset input/Asset.h)
 
 add_subdirectory(tests/src)
 
